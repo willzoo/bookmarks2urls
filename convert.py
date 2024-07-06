@@ -33,7 +33,7 @@ if __name__ == '__main__':
             folder = folder_pattern.search(line)
             if folder:
                 folder_name = folder.group(1)
-                folder_name = folder_name.replace('||', '')
+                folder_name = folder_name.replace(' || ', '+')
                 folder_stack.append(folder_name)
                 continue
             
@@ -47,6 +47,6 @@ if __name__ == '__main__':
                 print(name_list + ": " + url.group(1))
 
     for folder, items in folder_dictionary.items():
-        with open(folder + '.txt', 'w', encoding='utf-8') as file:
+        with open("Results/" + folder + '.txt', 'w', encoding='utf-8') as file:
             for item in items:
-                file.write(item)
+                file.write(item + '\n')
